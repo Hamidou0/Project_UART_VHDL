@@ -1,0 +1,19 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+ENTITY transmitter IS
+	PORT(
+		load		: IN	STD_LOGIC;
+		BClk		: IN  STD_LOGIC;
+		TxD		: OUT STD_LOGIC_VECTOR (7 downto 0)
+	);
+END transmitter;
+
+ARCHITECTURE rtl OF transmitter IS
+	SIGNAL TDR : STD_LOGIC_VECTOR(7 DOWNTO 0);
+	SIGNAL TSR : STD_LOGIC_VECTOR(7 DOWNTO 0);
+
+BEGIN
+	
+
+END rtl;

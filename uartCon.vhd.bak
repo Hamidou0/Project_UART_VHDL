@@ -1,0 +1,37 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+ENTITY uartCon IS
+	PORT(
+		GReset_con : IN std_logic;
+		bclk_con  : IN std_logic;
+		TxD_con	: OUT STD_logic;
+		RxD_con	: IN STD_logic;
+		MSTL	: IN STD_LOGIC_VECTOR(2 DOWNTO 0)
+	);
+END uartCon;
+
+ARCHITECTURE rtl OF uartCon IS
+
+	signal intt_ON: std_logic;
+	signal TDRE_con : std_logic;
+	signal reset_trdre_con :std_LOGIC;
+	signal set_rdrf_con: std_LOGIC;
+BEGIN
+
+	transmitter: work.transmitter PORT MAP(
+			GReset <= Greset_con,
+			TDRE <= TDRE_con,
+			bclk <= bclk_con,
+			reset_trdre <= reset_trdre_con,
+			TxD <= TxD_con
+		);
+	receiver: work.receiver PORT MAP(
+			GReset <= GReset_con,
+			RxD <= Rxd_con,
+			bclk <- bclk_con,
+			set_RDRF <= set_RDRF_con
+		);
+	
+	
+END rtl;

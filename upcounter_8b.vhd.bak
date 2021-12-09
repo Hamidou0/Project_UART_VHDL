@@ -1,0 +1,26 @@
+LIBRARY ieee ;
+USE ieee.std_logic_1164.all;
+USE ieee.std logic unsigned.all;
+
+ENTITY upcounter_8b IS
+PORT (Clock, Resetn, Enable : IN STD_LOGIC ;
+			target: OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+			Q : OUT STD_LOGIC_VECTOR(7 DOWNTO 0) ) ;
+END upcount;
+ARCHITECTURE behavioral OF upcount IS
+	SIGNAL Count : std_logic_vector(3 DOWNTO 0);
+BEGIN
+	PROCESS ( Clock , Resetn)
+	BEGIN
+		IF Resetn = ‘0’THEN
+			Count <= "0000" ;
+		ELSIF rising_edge(Clock) THEN
+			IF Enable = ‘1’ THEN
+			Count <= Count + 1 ;
+			ELSE
+			Count <= Count ;
+			END IF ;
+		END IF;
+	END PROCESS;
+Q <= Count;
+END behavioral;

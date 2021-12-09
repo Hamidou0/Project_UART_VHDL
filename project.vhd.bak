@@ -1,0 +1,14 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+ENTITY project IS
+	PORT(
+	
+	);
+END project;
+
+ARCHITECTURE rtl OF project IS
+
+BEGIN
+
+END rtl;

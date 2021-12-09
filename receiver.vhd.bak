@@ -1,0 +1,25 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+ENTITY receiver IS
+	PORT(
+		RxD		: IN	STD_LOGIC;
+		bclk		: IN  STD_LOGIC;
+		RDR		: OUT 	STD_LOGIC_VECTOR (7 downto 0)
+	);
+END receiver;
+
+ARCHITECTURE rtl OF receiver IS
+	SIGNAL unload: STD_LOGIC;
+	SIGNAL trans_control: STD_LOGIC;
+	SIGNAL TSR : STD_LOGIC_VECTOR(7 DOWNTO 0);
+	SIGNAL TSR_shifted : STD_LOGIC_VECTOR(7 DOWNTO 0);
+
+BEGIN
+	unload <= load or trans_control;
+	
+	tsr shifting: left8 PORT MAP(trans_control,TSR,TSR_shifted, bclk);
+	tsr mulitplexer: mux3_1_8b PORT MAP(unload,TDR,"11111111",TSR_shifted,TSR);
+	TxD output: enARdFF_2 PORT MAP('1',TSR(0),'1',trans_control,TxD);
+	
+END rtl;

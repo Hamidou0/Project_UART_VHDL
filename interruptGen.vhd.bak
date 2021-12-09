@@ -1,0 +1,22 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+ENTITY interruptGen IS
+	PORT(
+		
+		test_out_clock8: OUT STD_LOGIC;
+		test_out_clock4: OUT STD_LOGIC;
+		test_out_doneshi: OUT STD_LOGIC;
+		
+		
+		bclk		: IN  STD_LOGIC;
+		RDR		: OUT 	STD_LOGIC_VECTOR (7 downto 0);
+		states		: OUT STD_LOGIC_VECTOR(3 downto 0);
+		set_RDRF : OUT STD_LOGIC
+	);
+END interruptGen;
+
+ARCHITECTURE rtl OF interruptGen IS
+
+	
+END rtl;
